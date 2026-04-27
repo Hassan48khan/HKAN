@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name            = "hkan"
+version         = "0.1.0"
+description     = "HKAN: Holomorphic Kolmogorov-Arnold Network — a novel sequence model fusing KAN splines, Mamba SSMs, and Möbius complex gating"
+readme          = "README.md"
+requires-python = ">=3.9"
+license         = { text = "MIT" }
+authors         = [{ name = "HKAN Contributors" }]
+keywords        = ["deep-learning", "sequence-model", "KAN", "mamba", "state-space", "pytorch"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "torch>=2.0.0",
+    "einops>=0.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "mypy",
+]
+train = [
+    "wandb",
+    "numpy",
+    "tqdm",
+]
+all = ["hkan[dev,train]"]
+
+[project.urls]
+Homepage   = "https://github.com/your-org/HKAN"
+Repository = "https://github.com/your-org/HKAN"
+Issues     = "https://github.com/your-org/HKAN/issues"
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
